@@ -1,0 +1,46 @@
+/* Glassmorphism for legend and card */
+.glass-legend, .glass-card {
+  backdrop-filter: blur(12px) saturate(1.2);
+  background: rgba(255,255,255,0.7);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.10);
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.18);
+}
+
+/* Marker hover effect */
+.leaflet-marker-icon.custom-marker:hover {
+  transform: scale(1.18) !important;
+  filter: drop-shadow(0 2px 8px #2563eb55);
+  z-index: 1000;
+  transition: all 0.2s;
+}
+
+/* Floating card animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s cubic-bezier(.23,1.01,.32,1) both;
+}
+
+.bounce-marker {
+  animation: bounce 1.2s cubic-bezier(.28,.84,.42,1) 1;
+}
+@keyframes bounce {
+  0%   { transform: scale(1) translateY(0); }
+  10%  { transform: scale(1.2,0.8) translateY(0); }
+  30%  { transform: scale(0.9,1.1) translateY(-10px); }
+  50%  { transform: scale(1.05,0.95) translateY(0); }
+  57%  { transform: scale(1) translateY(-4px); }
+  64%  { transform: scale(1) translateY(0); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+.leaflet-container:focus,
+.leaflet-container:active,
+.leaflet-container *:focus,
+.leaflet-container *:active {
+  outline: none !important;
+  box-shadow: none !important;
+} 

@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@react-three/drei": "^10.4.2",
+    "@react-three/fiber": "^9.1.4",
+    "firebase": "^11.9.1",
+    "react-firebase-hooks": "^5.1.1",
+    "three": "^0.178.0"
+  }
+}

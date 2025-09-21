@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Modern Academic (Green Focus) */
+    /* Deep Navy (#1B1F3B) */
+    --background: 232 37% 17%;
+    /* Soft White (#F9FAFB) */
+    --foreground: 210 20% 98%;
+
+    /* Emerald Green (#2E7D32) */
+    --primary: 123 46% 33%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Light Mint (#A5D6A7) */
+    --secondary: 125 38% 74%;
+    --secondary-foreground: 232 37% 17%;
+  }
+
+  body {
+    @apply bg-[hsl(var(--background))] text-[hsl(var(--foreground))];
+  }
+
+  /* Ensure typed text is black in form fields */
+  input, textarea, select {
+    @apply text-black bg-white;
+  }
+
+  input::placeholder, textarea::placeholder {
+    @apply text-gray-500;
+  }
+
+  /* Increase readability: default text elements use high-contrast black */
+  p, li, span, label {
+    color: #111827; /* Tailwind gray-900 */
+  }
+
+  /* Darken commonly used light text utility classes globally */
+  .text-gray-500,
+  .text-gray-600,
+  .text-gray-700 {
+    color: #111827 !important; /* gray-900 */
+  }
+
+  /* Make mid-blue text variants darker for readability */
+  .text-blue-600 { color: #1e40af !important; } /* blue-800 */
+}

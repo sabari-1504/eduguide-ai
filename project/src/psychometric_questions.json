@@ -1,0 +1,317 @@
+[
+  {
+    "id": 1,
+    "question": "How do you prefer to solve a problem?",
+    "options": [
+      {
+        "label": "A",
+        "text": "By evaluating data and previous examples.",
+        "tag": "L"
+      },
+      {
+        "label": "B",
+        "text": "By brainstorming unusual or out-of-the-box ideas.",
+        "tag": "R"
+      },
+      {
+        "label": "C",
+        "text": "By discussing the issue and balancing different viewpoints.",
+        "tag": "B"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "In a group task, what role do you naturally take?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Organizer or timekeeper.",
+        "tag": "L"
+      },
+      {
+        "label": "B",
+        "text": "Idea generator or motivator.",
+        "tag": "R"
+      },
+      {
+        "label": "C",
+        "text": "Coordinator and communicator between roles.",
+        "tag": "B"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "When reading a book, you enjoy:",
+    "options": [
+      {
+        "label": "A",
+        "text": "Analyzing the logic or plot mechanics.",
+        "tag": "L"
+      },
+      {
+        "label": "B",
+        "text": "Imagining the world and characters vividly.",
+        "tag": "R"
+      },
+      {
+        "label": "C",
+        "text": "Understanding how characters relate and evolve.",
+        "tag": "B"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "When planning a trip, what do you enjoy most?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Creating a detailed itinerary and budget.",
+        "tag": "L"
+      },
+      {
+        "label": "B",
+        "text": "Picking locations based on how exciting or beautiful they seem.",
+        "tag": "R"
+      },
+      {
+        "label": "C",
+        "text": "Balancing cost, comfort, and fun for everyone involved.",
+        "tag": "B"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "You're given a large project with a deadline. What do you do first?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Break it into steps and create a checklist.",
+        "tag": "L"
+      },
+      {
+        "label": "B",
+        "text": "Imagine the end result and start creatively sketching ideas.",
+        "tag": "R"
+      },
+      {
+        "label": "C",
+        "text": "Gather input from your team before deciding the approach.",
+        "tag": "B"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "question": "When learning something new, you prefer to:",
+    "options": [
+      {
+        "label": "A",
+        "text": "Follow a structured step-by-step approach.",
+        "tag": "L"
+      },
+      {
+        "label": "B",
+        "text": "Explore and experiment freely.",
+        "tag": "R"
+      },
+      {
+        "label": "C",
+        "text": "Learn through discussion and collaboration.",
+        "tag": "B"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "question": "When making decisions, you rely most on:",
+    "options": [
+      {
+        "label": "A",
+        "text": "Facts, data, and logical analysis.",
+        "tag": "L"
+      },
+      {
+        "label": "B",
+        "text": "Intuition and creative insights.",
+        "tag": "R"
+      },
+      {
+        "label": "C",
+        "text": "Input from others and consensus building.",
+        "tag": "B"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "question": "In your ideal work environment, you would:",
+    "options": [
+      {
+        "label": "A",
+        "text": "Prefer clear structure and defined processes.",
+        "tag": "L"
+      },
+      {
+        "label": "B",
+        "text": "Thrive in a flexible, creative atmosphere.",
+        "tag": "R"
+      },
+      {
+        "label": "C",
+        "text": "Enjoy collaborative team dynamics.",
+        "tag": "B"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "question": "When facing a complex challenge, you:",
+    "options": [
+      {
+        "label": "A",
+        "text": "Break it down into manageable parts systematically.",
+        "tag": "L"
+      },
+      {
+        "label": "B",
+        "text": "Look for innovative and unconventional solutions.",
+        "tag": "R"
+      },
+      {
+        "label": "C",
+        "text": "Seek diverse perspectives and team input.",
+        "tag": "B"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "question": "Your approach to time management is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "Highly organized with detailed schedules.",
+        "tag": "L"
+      },
+      {
+        "label": "B",
+        "text": "Flexible, adapting to inspiration and energy.",
+        "tag": "R"
+      },
+      {
+        "label": "C",
+        "text": "Balanced between structure and spontaneity.",
+        "tag": "B"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "question": "When working on a team project, you:",
+    "options": [
+      {
+        "label": "A",
+        "text": "Focus on ensuring quality and meeting deadlines.",
+        "tag": "L"
+      },
+      {
+        "label": "B",
+        "text": "Bring fresh ideas and creative energy.",
+        "tag": "R"
+      },
+      {
+        "label": "C",
+        "text": "Facilitate communication and team harmony.",
+        "tag": "B"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "question": "Your ideal learning method is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "Reading textbooks and following detailed instructions.",
+        "tag": "L"
+      },
+      {
+        "label": "B",
+        "text": "Hands-on experimentation and discovery.",
+        "tag": "R"
+      },
+      {
+        "label": "C",
+        "text": "Group discussions and peer learning.",
+        "tag": "B"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "question": "When evaluating ideas, you prioritize:",
+    "options": [
+      {
+        "label": "A",
+        "text": "Feasibility and practical implementation.",
+        "tag": "L"
+      },
+      {
+        "label": "B",
+        "text": "Originality and creative potential.",
+        "tag": "R"
+      },
+      {
+        "label": "C",
+        "text": "Team consensus and stakeholder buy-in.",
+        "tag": "B"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "question": "In a brainstorming session, you:",
+    "options": [
+      {
+        "label": "A",
+        "text": "Help organize and categorize ideas.",
+        "tag": "L"
+      },
+      {
+        "label": "B",
+        "text": "Generate wild and unconventional ideas.",
+        "tag": "R"
+      },
+      {
+        "label": "C",
+        "text": "Encourage participation and build on others' ideas.",
+        "tag": "B"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "question": "Your preferred way to approach a new subject is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "Start with fundamentals and build systematically.",
+        "tag": "L"
+      },
+      {
+        "label": "B",
+        "text": "Jump in and explore interesting aspects first.",
+        "tag": "R"
+      },
+      {
+        "label": "C",
+        "text": "Learn through examples and case studies.",
+        "tag": "B"
+      }
+    ]
+  }
+]
