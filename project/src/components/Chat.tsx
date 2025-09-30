@@ -142,83 +142,34 @@ const Chat: React.FC = () => {
   };
 
   const generateAIResponse = async (userMessage: string, retryCount = 0): Promise<string> => {
-    const apiKey = import.meta.env.VITE_GEMINI_API_KEY || "";
-
     const prompt = `You are an educational guidance assistant specializing in helping students with course selection, career advice, and admission guidance. Focus on providing detailed, accurate, and helpful information about educational opportunities, particularly in India. Be friendly and encouraging while maintaining professionalism. Keep responses concise but informative.
 
 User question: ${userMessage}`;
 
-    // 1) Try Netlify serverless proxy first (avoids client-side CORS and key restrictions)
     try {
       const proxyResp = await fetch('/.netlify/functions/ai-proxy', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [
-            { role: 'user', parts: [{ text: prompt }] }
-          ],
-          generationConfig: {
-            temperature: 0.7,
-            maxOutputTokens: 300,
-            topP: 0.8,
-            topK: 10
-          }
-        })
+        body: JSON.stringify({ prompt, model: 'gemini-1.5-flash' })
       });
 
       if (proxyResp.ok) {
         const data = await proxyResp.json();
-        // Gemini response extraction
-        const text = data?.candidates?.[0]?.content?.parts?.[0]?.text
-          || data?.candidates?.[0]?.content?.parts?.map((p: any) => p?.text).filter(Boolean).join('\n')
-          || data?.text
-          || '';
+        const text = data?.text || '';
         if (text) return text;
+      } else if (proxyResp.status === 429 && retryCount < 2) {
+        const delay = Math.pow(2, retryCount + 1) * 1000;
+        await new Promise(resolve => setTimeout(resolve, delay));
+        return generateAIResponse(userMessage, retryCount + 1);
       } else {
-        console.warn('Proxy call failed with status:', proxyResp.status);
+        const errText = await proxyResp.text();
+        console.error('Proxy error:', proxyResp.status, errText);
       }
-    } catch (proxyError) {
-      console.warn('Proxy not available or failed, falling back to client SDK.', proxyError);
-    }
-
-    // 2) Fallback to client SDK if proxy isn’t available
-    try {
-      if (!apiKey) {
-        console.error('Gemini API key is missing for client SDK');
-        return "I apologize, but I'm not properly configured. Please check the API key configuration.";
-      }
-
-      const genAI = new GoogleGenerativeAI(apiKey);
-      const model = genAI.getGenerativeModel({
-        model: 'gemini-1.5-flash',
-        generationConfig: {
-          temperature: 0.7,
-          maxOutputTokens: 300,
-          topP: 0.8,
-          topK: 10
-        }
-      });
-
-      const result = await model.generateContent(prompt);
-      const response = await result.response;
-      const text = response.text();
-      return text;
     } catch (error) {
-      console.error('Detailed error in AI response:', error);
-      if (error instanceof Error) {
-        if (error.message.includes('API_KEY_INVALID')) {
-          return 'Authentication error: Please check if the API key is correct.';
-        } else if (error.message.includes('QUOTA_EXCEEDED')) {
-          if (retryCount < 2) {
-            const delay = Math.pow(2, retryCount + 1) * 1000;
-            await new Promise(resolve => setTimeout(resolve, delay));
-            return generateAIResponse(userMessage, retryCount + 1);
-          }
-          return '⚠️ I\'m answering too many students at once. Please wait ~30–60 seconds and try again.';
-        }
-      }
-      return 'I apologize, but I encountered an error. Please try again.';
+      console.error('Proxy request failed:', error);
     }
+
+    return 'I apologize, but I encountered an error. Please try again.';
   };
 
   // Simple in-memory request queue to avoid parallel API calls

@@ -1,4 +1,5 @@
 import type { Handler } from '@netlify/functions';
+import { GoogleGenAI } from '@google/genai';
 
 export const handler: Handler = async (event) => {
   try {
@@ -12,36 +13,58 @@ export const handler: Handler = async (event) => {
     }
 
     const body = event.body ? JSON.parse(event.body) : {};
-    const { contents, generationConfig } = body || {};
-    if (!contents || !Array.isArray(contents)) {
-      return { statusCode: 400, body: 'Invalid request: contents array required' };
-    }
+    const {
+      prompt,
+      contents,
+      generationConfig,
+      model = 'gemini-1.5-flash'
+    } = body || {};
 
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        contents,
+    const ai = new GoogleGenAI({ apiKey });
+
+    // Support both simple prompt and low-level contents
+    if (prompt && typeof prompt === 'string') {
+      const response = await ai.models.generateContent({
+        model,
+        contents: prompt,
+        // Node SDK accepts generationConfig too
         generationConfig: generationConfig || {
           temperature: 0.7,
           maxOutputTokens: 300,
           topP: 0.8,
-          topK: 10
+          topK: 10,
         },
-      }),
+      });
+
+      return {
+        statusCode: 200,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: response.text })
+      };
+    }
+
+    if (!contents || (Array.isArray(contents) && contents.length === 0)) {
+      return { statusCode: 400, body: 'Invalid request: provide either prompt (string) or contents (array)' };
+    }
+
+    const response = await ai.models.generateContent({
+      model,
+      contents,
+      generationConfig: generationConfig || {
+        temperature: 0.7,
+        maxOutputTokens: 300,
+        topP: 0.8,
+        topK: 10,
+      },
     });
 
-    const text = await response.text();
     return {
-      statusCode: response.status,
+      statusCode: 200,
       headers: { 'Content-Type': 'application/json' },
-      body: text,
+      body: JSON.stringify({ text: response.text })
     };
   } catch (err: any) {
     return { statusCode: 500, body: err?.message || 'Unknown server error' };
   }
 };
-
 
