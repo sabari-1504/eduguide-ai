@@ -205,3 +205,4 @@ For support, email support@eduguide-ai.com or create an issue on GitHub.
 ---
 
 **Made with ❤️ for students seeking their perfect educational path**
+
