@@ -150,7 +150,7 @@ User question: ${userMessage}`;
       const proxyResp = await fetch('/.netlify/functions/ai-proxy', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt, model: 'gemini-1.5-flash' })
+        body: JSON.stringify({ prompt, model: 'gemini-2.5-flash' })
       });
 
       if (proxyResp.ok) {

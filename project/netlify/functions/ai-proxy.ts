@@ -17,7 +17,7 @@ export const handler: Handler = async (event) => {
       prompt,
       contents,
       generationConfig,
-      model = 'gemini-1.5-flash'
+      model = 'gemini-2.5-flash'
     } = body || {};
 
     const ai = new GoogleGenAI({ apiKey });
